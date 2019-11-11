@@ -16,7 +16,8 @@ sql = """
     body TEXT NOT NULL,
     due_date TEXT NOT NULL,
     status TEXT DEFAULT "Incomplete",
-    userid INTEGER DEFAULT ""
+    userid INTEGER DEFAULT "",
+    projectid INTEGER DEFAULT ""
   )
 
 """
@@ -27,8 +28,22 @@ conn.commit()
 sql = """
 CREATE TABLE IF NOT EXISTS users(
     id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    email TEXT NOT NULL
   )
+
+"""
+
+cur.execute(sql)
+conn.commit()
+
+
+sql = """
+CREATE TABLE IF NOT EXISTS projects(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    userid INTEGER DEFAULT ""
+      )
 
 """
 
